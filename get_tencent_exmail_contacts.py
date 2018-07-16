@@ -72,7 +72,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-l", "--limit", required=False, dest="limit", default=10000, help="通讯录条数")
     parser.add_argument(
-        "-e", "--efile", required=False, dest="emailfile", default="emails.txt", help="邮箱保存文件")
+        "-e", "--efile", required=False, dest="emailfile", default="emails.csv", help="邮箱保存文件")
     parser.add_argument(
         "-d", "--dfile", required=False, dest="departfile", default="departments.txt", help="部门信息保存文件")
     args = parser.parse_args()
@@ -173,8 +173,8 @@ if __name__ == "__main__":
         results = re.findall(regexp, text)
 
         for item in results:
-            all_emails.append(item[3])
-            print item[3]
+            all_emails.append(item[2] + ',' + item[3] + ' ' + item[9])
+            print item[2] + ' ' + item[3] + ' ' + item[9]
             staff = dict(uin=item[0], pid=item[1], name=item[2], alias=item[3], sex=item[4], pos=item[
                          5], tel=item[6], birth=item[7], slave_alias=item[8], department=item[9], mobile=item[10])
             staff_infors.append(staff)
